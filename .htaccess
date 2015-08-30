@@ -1,0 +1,23 @@
+#back
+#AddDefaultCharset utf-8
+
+#Deny from all
+#Allow from 117.0.207.245 127.0.0.1
+
+#Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+#RewriteCond %{HTTP_HOST} ^earlystart\.co$
+#RewriteRule (.*) http://www.earlystart.co/$1 [R=301,L]
+
+# Make the backend accessible via url: http://site/backend.
+
+RewriteRule ^backend backend.php
+
+# If a directory or a file exists, use it directly.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Otherwise forward it to index.php.
+RewriteRule . index.php
